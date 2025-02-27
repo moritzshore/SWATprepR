@@ -20,7 +20,7 @@ detailed overview is presented in the article by Plunge, Szabó, et al.
 (2024). Most functions were developed for the implementation of modeling
 tasks in the [OPTAIN project](https://www.optain.eu/). These tools are
 intended to fill the gaps in the SWAT+ workflow alongside the main tools
-developed by [Christoph Schuerz](https://www.ufz.de/index.php?en=49467).
+developed by [Christoph Schuerz](https://www.ufz.de/index.php?en=49467). 
 Therefore, we highly recommend trying and using these tools:
 
 - [SWATbuildR](https://git.ufz.de/optain/wp4-integrated-assessment/swat/bildr_script)[^1] -
