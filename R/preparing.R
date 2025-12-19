@@ -396,6 +396,7 @@ prepare_wgn <- function(meteo_lst, TMP_MAX = NULL, TMP_MIN = NULL, PCP = NULL, R
 #' Default \code{period_ends = NA}, stands for all available in data.
 #' @param clean_files Logical, if TRUE, will remove all existing weather files 
 #' in model setup folder before writing new ones. Default \code{clean_files = TRUE}.
+#' @param cleanup my par to keep temp folder
 #' @importFrom purrr map
 #' @importFrom dplyr filter %>% mutate select mutate_if mutate_at mutate_all rename full_join contains arrange
 #' @importFrom sf st_as_sf
@@ -413,7 +414,7 @@ prepare_wgn <- function(meteo_lst, TMP_MAX = NULL, TMP_MIN = NULL, PCP = NULL, R
 #' @keywords writing
 
 prepare_climate <- function(meteo_lst, write_path, period_starts = NA, period_ends = NA,
-                            clean_files = TRUE){
+                            clean_files = TRUE, cleanup = TRUE){
   ##Checking input
   if(!is.list(meteo_lst)){
     stop("Make sure your meteo_lst input is list of lists described in function description!!!")
@@ -644,7 +645,7 @@ prepare_climate <- function(meteo_lst, write_path, period_starts = NA, period_en
   }
   ##Coping files from temp folder into main and deleting temp folder
   invisible(file.copy(paste(f_dir, list.files(f_dir), sep = "/"), write_path, overwrite = TRUE))
-  unlink(paste(f_dir), recursive = TRUE)
+  if(cleanup){unlink(paste(f_dir), recursive = TRUE)}
   ##Done
   print(paste0("Climate data were successfully written in ", write_path))
   gc()
